@@ -1,0 +1,26 @@
+import uinput
+#imports the uinput module
+import time
+import os
+import RPi.GPIO as GPIO
+#imports the RPi.GPIO module
+
+GPIO.setmode(GPIO.BCM)
+#sets GPIO numbering as BCM style
+
+GPIO.setup(18, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+#sets a pull up resisitor on bcm GPIO pin 18
+
+device = uinput.Device([uinput.KEY_6])
+#sets device as if pressing the 6 key
+
+while 1:
+	if GPIO.input(18) == GPIO.LOW:
+		device.emit(uinput.KEY_6, 1)
+		#if the input is low it means a coin ahs been input, the 1 also means the key is pressed
+	
+	if GPIO.input(18) == GPIO.HIGH:
+		device.emit(uinput.KEY_6, 0)
+		#if the input is high a coin hasnt been input, the 0 means they key is released
+
+GPIO.cleanup()		
