@@ -1,0 +1,10 @@
+#exit emulationstation then on command line
+#add before exit 0
+sudo nano /boot/config.txt
+disable_overscane = 1
+hdmi_cvt 800 480 60 6 0 0 0
+#sets resolution in this case 800 by 480
+hdmi_group = 2
+hdmi_mode = 87
+display_rotate = 2
+#sets screen roatation 1 is flip 90 degrees
