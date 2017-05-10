@@ -1,0 +1,13 @@
+import time
+import RPi.GPIO as GPIO
+
+GPIO.setmode(GPIO.BCM)
+#sets read mode as BCM numbering for GPIO pins rather than BOARD
+GPIO.setup(18, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+#Sets a pull up resistor on BCM GPIO pin 18
+while 1:
+#while there is a gpio pin 18
+	if GPIO.input(18) == GPIO.LOW:
+		#checks input on pin 18 and then checks if its high or low if its low it prints low
+			print "low"
+GPIO.cleanup()	
